@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.JOptionPane;
 public class conversor extends JFrame implements ActionListener{
 private JMenuBar barramenu;
 private JMenu opciones;
@@ -41,7 +42,7 @@ add(Resultado);
 Resultado.setBounds(45,10,500,100);
 bo=new JLabel("Base origen");
 bd=new JLabel("Base destino");
-in=new JLabel("Ingresa tu número");
+in=new JLabel("Ingresa tu nï¿½mero");
 add(bo);
 add(bd);
 add(in);
@@ -64,24 +65,24 @@ combo1.setBounds(45,100,120,40);
 combo2.setBounds(45,230,120,40);
 add(combo1);
 add(combo2);
-combo1.addItem("2 (Binario)");
+combo1.addItem("2");
 combo1.addItem("3");
 combo1.addItem("4");
 combo1.addItem("5");
 combo1.addItem("6");
 combo1.addItem("7");
-combo1.addItem("8 (octal)");
+combo1.addItem("8");
 combo1.addItem("9)");
-combo1.addItem("10 (Decimal)");
+combo1.addItem("10");
 combo1.addItem("11");
 combo1.addItem("12");
 combo1.addItem("13");
 combo1.addItem("14");
 combo1.addItem("15");
-combo1.addItem("16 (Hexadecimal)");
+combo1.addItem("16");
 //combo1.addItemListener(this);
 
-combo2.addItem("2(Binario)");
+combo2.addItem("2");
 combo2.addItem("3");
 combo2.addItem("4");
 combo2.addItem("5");
@@ -110,23 +111,8 @@ b2.addActionListener(this);
 
 }
 
-/*
-public void itemStateChanged(ItemEvent e){
-if (e.getSource()==combo1){
- String seleccionado=(String)combo1.getSelectedItem();
- 
- //getHex(seleccionado);//
- setTitle(seleccionado);
-}
 
-if (e.getSource()==combo2){
- String seleccionado2=(String)combo2.getSelectedItem();
- setTitle(seleccionado2);
-}
-
-}
-*/
-
+//metodo para los botones//
 public void actionPerformed(ActionEvent e){
 
 Container f=this.getContentPane();
@@ -146,23 +132,41 @@ Container f=this.getContentPane();
   System.exit(0);
   }
  
- if (e.getSource()==combo1){
-  String seleccionado=(String)combo1.getSelectedItem();
-  //getHex(seleccionado);//
-  setTitle(seleccionado);
- }
-
- if (e.getSource()==combo2){
-  String seleccionado2=(String)combo2.getSelectedItem();
-  setTitle(seleccionado2);
- }
 
  if(e.getSource()==b1){
-  String seleccionado=(String)combo1.getSelectedItem();
+  String seleccionado1=(String)combo1.getSelectedItem();
+  int baseorigen=Integer.parseInt(seleccionado1);
   int x=Integer.parseInt(a1.getText());
-  setTitle(String.valueOf(x));
-  //getHex(seleccionado);//
-  //setTitle(seleccionado);
+  //Validaciones.comprobar(baseorigen,x);
+  int mensaje=Validaciones.comprobar(baseorigen,x);
+   
+  if(mensaje==1){
+   setTitle("VALIDO");
+  }else{
+    setTitle("NO VALIDO");
+    JOptionPane.showMessageDialog(null,"NO VALIDO");
+   }
+  //a1.setText(seleccionado1);
+  //a1.setText(String.valueOf(Validaciones.comprobar(seleccionado1)));
+  
+  //obtener comboBox 2//
+  String seleccionado2=(String)combo2.getSelectedItem();
+  //int basedestino=Integer.parseInt(seleccionado2);
+  //String binario=Integer.toBinaryString(x);
+  
+  //String octal=Integer.toOctalString(binario);
+  //a2.setText(octal);
+  
+  //a2.setText(Validaciones.comprobar(basedestino));
+  
+  
+  //String validar=a1.getText();
+  //Validaciones.comprobar(validar,seleccionado); 
+  //setTitle(Validaciones.comprobar(validar, seleccionado));
+  //setTitle(String.valueOf(x));
+  //setTitle(Validaciones.validar(seleccionado));
+  //setTitle(Testing.getHex(seleccionado));
+  //a2.setText(Testing.getHex(seleccionado));
  }
  
  if(e.getSource()==b2){

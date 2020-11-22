@@ -38,6 +38,7 @@ add(autor4);
 add(autor5);
 add(b1);
 b1.addActionListener(this);
+b1.setLayout(null);
 IU.setBounds(225,15,270,100);
 U.setBounds(45,35,500,100);
 Materia.setBounds(225,85,250,50);
